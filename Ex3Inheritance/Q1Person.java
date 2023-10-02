@@ -136,33 +136,40 @@ class TestInheritance {
 	
 	
 	
-	public void testProgram() {		
+	public void testProgram() {
+		System.out.println("Testing student.getProgram()...");		
 		assert this.student.getProgram().equals("CSC");
 	}
 	
-	public void testYear() {		
+	public void testYear() {
+		System.out.println("Testing student.getYear()...");		
 		assert this.student.getYear() == 2022;
 	}
 	
 	public void testTotal() {		
+		System.out.println("Testing student.getTotal()...");
 		assert this.student.getTotal() == 400;
 	}
 	
 	public void testGPA() {		
+		System.out.println("Testing student.calGPA()...");
 		assert this.student.calGPA() == 8 : this.student.calGPA();
 	}
 	
 	public void testDesig() {
+		System.out.println("Testing faculty.getDesig()...");
 		assert this.faculty.getDesig().equals("Associate Professor");
 	}
 	
 	public void testBasic() {
+		System.out.println("Testing faculty.getBasic()...");
 		assert this.faculty.getBasic() == 1000;
 	}
 	
 	public void testSalary() {
 		float salary = this.faculty.calSalary();
 		//System.out.println(salary);
+		System.out.println("Testing faculty.calSalary()...");
 		assert salary == 1535 : salary;
 	}
 	
