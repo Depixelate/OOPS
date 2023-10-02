@@ -1,7 +1,10 @@
+package Ex3Inheritance;
+
 abstract class Shape {
 	public Shape(String color) {
 		this.color = color;
 	}
+
 	public Shape() {
 	}
 	
@@ -29,8 +32,8 @@ class Circle extends Shape {
 	}
 	
 	public Circle(float radius, String color) {
-		super(color);
-		this(radius);
+		this.color = color;
+		this.radius = radius;
 	}
 	
 	public float getRadius() {
@@ -42,13 +45,17 @@ class Circle extends Shape {
 	}
 	
 	public float getArea() {
-		return Math.PI * Math.pow(radius, 2);
+		return (float)(Math.PI * Math.pow(radius, 2));
 	}
 	
 	public float getPerimeter() {
-		return 2 * Math.PI * radius;
-	}	
+		return (float) (2 * Math.PI * radius);
+	}
 	
+	public String toString() {
+		return String.format("Circle(col=%s,rad=%f)", this.color, this.radius);
+	}
+
 	protected float radius = 1.0f;
 }
 
@@ -61,8 +68,8 @@ class Rectangle extends Shape {
 	}
 	
 	public Rectangle (float width, float length, String color) {
-		super(color);
 		this(width, length);
+		this.color = color;
 	}
 	
 	public float getWidth() {
@@ -84,16 +91,20 @@ class Rectangle extends Shape {
 	public float getArea() {
 		return width * length;
 	}
-	
-	public float getPerimeter() {
-		return 2 * (width + height);
+
+	public String toString() {
+		return String.format("Rectangle(col=%s,width=%f,length=%f)", this.color, this.width, this.length);
 	}
 	
-	protected float width = 1.0;
-	protected float height = 1.0;
+	public float getPerimeter() {
+		return 2 * (width + length);
+	}
+	
+	protected float width = 1.0f;
+	protected float length = 1.0f;
 }
 
-class Square extends Rectange {
+class Square extends Rectangle {
 	public Square() {}
 	public Square(float side) {
 		super(side, side);
@@ -109,7 +120,11 @@ class Square extends Rectange {
 	
 	public void setSide(float side) {
 		this.width = side;
-		this.height = side;
+		this.length = side;
+	}
+
+	public String toString() {
+		return String.format("Square(col=%s,side = %f)", this.color, this.width);
 	}
 	
 }
@@ -137,19 +152,19 @@ class TestShape {
 	}
 	
 	public void testArea() {
-		float[] expected = {Math.PI * 4, 12, 25};
+		float[] expected = {(float)(Math.PI * 4), 12, 25};
 		for(int i = 0; i < shapes.length; i++) {
 			float area = shapes[i].getArea();
-			System.out.println(String.format("Shape %d Area: %f", i, area)); 
+			System.out.println(String.format("%s Area: %f", shapes[i], area)); 
 			assert area == expected[i] : area;
 		}
 	}
 	
 	public void testPerimeter() {
-		float[] expected = {Math.PI * 4, 14, 20};
+		float[] expected = {(float)(Math.PI * 4), 14, 20};
 		for(int i = 0; i < shapes.length; i++) {
 			float perimeter = shapes[i].getPerimeter();
-			System.out.println(String.format("Shape %d Perimeter: %f", i, perimeter)); 
+			System.out.println(String.format("%s Perimeter: %f", shapes[i], perimeter)); 
 			assert perimeter == expected[i] : perimeter;
 		}
 	}

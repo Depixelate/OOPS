@@ -1,3 +1,5 @@
+package Ex3Inheritance;
+
 class Person {
 	// enum Gender {
 	//	MALE, FEMALE
