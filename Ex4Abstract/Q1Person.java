@@ -1,6 +1,9 @@
 package Ex4Abstract;
 
 import java.util.Arrays;
+import static java.lang.System.out;
+
+import static Utils.Input.*;
 
 class Person {
     private String name;
@@ -139,16 +142,40 @@ class TeachingAssistant extends Employee implements Student {
     }
 }
 
-// class TestDriver {
-//     public Test() {
-
-//     }
-// }
-
 
 public class Q1Person {
+    public static void testDriver() {
+        out.printf("Welcome to the test!\n");
+        var facName = readString("Enter faculty name: ");
+        var facAddr = readString("Enter faculty address: ");
+        var facId = readString("Enter faculty id: ");
+        var facDept = readString("Enter faculty dept: ");
+        var facBasic = readInt("Enter faculty basic salary: ");
+        var facDesig = readString("Enter faculty designation: ");
+        var facCourse = readString("Enter faculty course: ");
+        var fac = new Faculty(facName, facAddr, facId, facDept, facBasic, facDesig, facCourse);
+        out.printf("Faculty:\n");
+        out.printf("Name: %s, Address: %s, EmpId: %s, Dept: %s, Basic Salary: %d, Salary: %f, Designation: %s, Course: %s\n", fac.getName(), fac.getAddress(), fac.getEmpid(), fac.getDept(), fac.getBasic(), fac.calSalary(), fac.getDesig(), fac.getCourse());
+        
+        var taName = readString("Enter TA name: ");
+        var taAddr = readString("Enter TA address: ");
+        var taId = readString("Enter TA id: ");
+        var taDept = readString("Enter TA dept: ");
+        var taBasic = readInt("Enter TA basic salary: ");
+        var taProject = readString("Enter TA project: ");
+        var taCourse = readString("Enter TA course: ");
+        String taMarksStr = readString("Enter space separated TA marks: ");
+        String[] taMarkStrs = taMarksStr.split(" ");
+        float[] taMarks = new float[taMarkStrs.length];
+        for(int i = 0; i < taMarkStrs.length; i++) {
+            taMarks[i] = Float.parseFloat(taMarkStrs[i]);
+        }
+        var ta = new TeachingAssistant(taName, taAddr, taId, taDept, taBasic, taProject, taCourse, taMarks);
+        out.printf("TA:\n");
+        out.printf("Name: %s, Address: %s, EmpId: %s, Dept: %s, Basic Salary: %d, Salary: %f, Project: %s, Course: %s, Marks: %s, GPA: %f\n", ta.getName(), ta.getAddress(), ta.getEmpid(), ta.getDept(), ta.getBasic(), ta.calSalary(), ta.getProject(), ta.getCourse(), Arrays.toString(ta.getMarks()), ta.calcGPA());
+    }
     public static void main(String[] args) {
-
+        testDriver();
     }
 }
 
