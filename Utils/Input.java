@@ -6,7 +6,8 @@ import java.util.Scanner;
 public class Input {
     public final static Scanner sc = new Scanner(System.in);
 
-    public static printf(String format, Object... args) {
+
+    public static void printf(String format, Object... args) {
         out.printf(format, args);
     }
 
@@ -34,6 +35,4 @@ public class Input {
         out.printf(format, args);
         return sc.nextLine();
     }
-
-    
 }
