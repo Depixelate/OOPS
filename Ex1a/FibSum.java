@@ -2,7 +2,7 @@ package Ex1a;
 
 import java.util.Scanner;
 
-public class FibSum {
+class Main {
 
 	public static void main(String[] args) {
 		var input = new Scanner(System.in);

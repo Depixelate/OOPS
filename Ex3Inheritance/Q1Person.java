@@ -95,31 +95,13 @@ class Faculty extends Person {
 	}
 	
 	public float calSalary() {
-		return calGrossSalary() - calDeductions();
-	}
-	
-	private float calGrossSalary() {
-		return this.basicpay + calDA() + calHRA();
-	}
-	
-	private float calDeductions() {
-		return calMedicalInsurance() + calPF();
-	}
-	
-	private float calDA() {
-		return this.basicpay * 0.6f;
-	}
-	
-	private float calHRA() {
-		return this.basicpay * 0.1f;
-	}
-	
-	private float calMedicalInsurance() {
-		return this.basicpay * 0.085f;
-	}
-	
-	private float calPF() {
-		return this.basicpay * 0.08f;
+		float pf = basicpay * 0.08f;
+		float medicalInsurance = basicpay * 0.085f;
+		float hra = basicpay * 0.1f;
+		float da = basicpay * 0.6f;
+		float deductions = medicalInsurance + pf;
+		float grossSalary = basicpay + da + hra;
+		return grossSalary - deductions;
 	}
 	
 	private String designation;
@@ -128,66 +110,26 @@ class Faculty extends Person {
 }
 
 class TestInheritance {
-
-	public TestInheritance() {
-		this.student = new Student(1, "Sukessh", "PMO, India", 'M', "CSC", 2022, 400);		
-		this.faculty = new Faculty(1, "Deborah", "SSN, India", 'F', "Associate Professor", "CSC", 1000);
-	}
-	
-	
-	
-	public void testProgram() {
+	public static void main(String[] args) {
+		System.out.println("Starting tests...");
+		var student = new Student(1, "Sukessh", "PMO, India", 'M', "CSC", 2022, 400);		
+		var faculty = new Faculty(1, "Deborah", "SSN, India", 'F', "Associate Professor", "CSC", 1000);
 		System.out.println("Testing student.getProgram()...");		
-		assert this.student.getProgram().equals("CSC");
-	}
-	
-	public void testYear() {
+		assert student.getProgram().equals("CSC");
 		System.out.println("Testing student.getYear()...");		
-		assert this.student.getYear() == 2022;
-	}
-	
-	public void testTotal() {		
+		assert student.getYear() == 2022;
 		System.out.println("Testing student.getTotal()...");
-		assert this.student.getTotal() == 400;
-	}
-	
-	public void testGPA() {		
+		assert student.getTotal() == 400;
 		System.out.println("Testing student.calGPA()...");
-		assert this.student.calGPA() == 8 : this.student.calGPA();
-	}
-	
-	public void testDesig() {
+		assert student.calGPA() == 8 : student.calGPA();
 		System.out.println("Testing faculty.getDesig()...");
-		assert this.faculty.getDesig().equals("Associate Professor");
-	}
-	
-	public void testBasic() {
+		assert faculty.getDesig().equals("Associate Professor");
 		System.out.println("Testing faculty.getBasic()...");
-		assert this.faculty.getBasic() == 1000;
-	}
-	
-	public void testSalary() {
-		float salary = this.faculty.calSalary();
+		assert faculty.getBasic() == 1000;
+		float salary = faculty.calSalary();
 		//System.out.println(salary);
 		System.out.println("Testing faculty.calSalary()...");
 		assert salary == 1535 : salary;
-	}
-	
-	private Faculty faculty;
-	private Student student;
-}
-
-public class Q1Person {
-	public static void main(String[] args) {
-		var test = new TestInheritance();
-		System.out.println("Starting tests...");
-		test.testProgram();
-		test.testYear();
-		test.testTotal();
-		test.testGPA();
-		test.testDesig();
-		test.testBasic();
-		test.testSalary();
 		System.out.println("All tests done, successful!");
 	}
 }

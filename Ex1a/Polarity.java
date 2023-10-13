@@ -1,6 +1,6 @@
 package Ex1a;
 import java.util.Scanner;
-public class Polarity {
+class Main {
     public static void main(String[] args) {
         var sc = new Scanner(System.in);
         System.out.print("Enter a number: ");

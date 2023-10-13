@@ -131,14 +131,12 @@ class Square extends Rectangle {
 
 class TestShape {
 
-	public TestShape() {
-		shapes = new Shape[3];
+	public static void main(String[] args) {
+		System.out.println("Starting tests...");
+		var shapes = new Shape[3];
 		shapes[0] = new Circle(2, "green");
 		shapes[1] = new Rectangle(3, 4, "blue");
 		shapes[2] = new Square(5, "orange");
-	}
-	
-	public void testColor() {
 		String[] expected = {"green", "blue", "orange"};
 		for(int i = 0; i < shapes.length; i++) {
 			System.out.println(String.format("Testing getColor() of %s", shapes[i]));
@@ -150,79 +148,53 @@ class TestShape {
 			System.out.println(String.format("Testing setColor(color) of %s", shapes[i]));
 			assert shapes[i].getColor().equals("mauve") : "setColor failed: " + shapes[i].getColor();
 			//shapes[i].setColor("mauve");
-		}	
-	}
-	
-	public void testArea() {
-		float[] expected = {(float)(Math.PI * 4), 12, 25};
+		}
+		float[] expected2 = {(float)(Math.PI * 4), 12, 25};
 		for(int i = 0; i < shapes.length; i++) {
 			System.out.println(String.format("Testing getArea() of %s", shapes[i]));
 			float area = shapes[i].getArea();
 			System.out.println(String.format("%s Area: %f", shapes[i], area)); 
-			assert area == expected[i] : area;
+			assert area == expected2[i] : area;
 		}
-	}
-	
-	public void testPerimeter() {
-		float[] expected = {(float)(Math.PI * 4), 14, 20};
+
+		float[] expected3 = {(float)(Math.PI * 4), 14, 20};
 		for(int i = 0; i < shapes.length; i++) {
 			System.out.println(String.format("Testing getPerimeter() of %s", shapes[i]));
 			float perimeter = shapes[i].getPerimeter();
 			System.out.println(String.format("%s Perimeter: %f", shapes[i], perimeter)); 
-			assert perimeter == expected[i] : perimeter;
+			assert perimeter == expected3[i] : perimeter;
 		}
-	}
-	
-	public void testRadius() {
+
 		Circle c = (Circle)shapes[0];
 		System.out.println(String.format("Testing getRadius() of %s", c));
 		assert c.getRadius() == 2 : "getRadius failed: " + c.getRadius();
 		c.setRadius(5);
 		System.out.println(String.format("Testing setRadius(radius) of %s", c));
+
 		assert c.getRadius() == 5 : "setRadius failed: " + c.getRadius();
-	}
-	
-	public void testWidth() {
 		Rectangle r = (Rectangle)shapes[1];
 		System.out.println(String.format("Testing getWidth() of %s", r));
 		assert r.getWidth() == 3 : "getWidth failed: " + r.getWidth();
 		r.setWidth(5);
 		System.out.println(String.format("Testing setWidth(width) of %s", r));
 		assert r.getWidth() == 5 : "setWidth failed: " + r.getWidth();
-	}
-	
-	public void testSide() {
+
 		Square s = (Square)shapes[2];
 		System.out.println(String.format("Testing getSide() of %s", s));
 		assert s.getSide() == 5 : "getSide failed: " + s.getSide();
 		s.setSide(6);
 		System.out.println(String.format("Testing setSide(width) of %s", s));
 		assert s.getSide() == 6 : "setSide failed: " + s.getSide();
-	}
-	
-	public void testLength() {
-		Rectangle r = (Rectangle)shapes[1];
-		System.out.println(String.format("Testing getLength() of %s", r));
-		assert r.getLength() == 4 : "getLength failed: " + r.getLength();
-		r.setLength(5);
-		System.out.println(String.format("Testing setLength() of %s", r));
-		assert r.getLength() == 5 : "setLength failed: " + r.getLength();
-	}
-	
-	private Shape[] shapes;
-}
 
-public class Q2Shape {
-	public static void main(String[] args) {
-		var test = new TestShape();
-		System.out.println("Starting tests...");
-		test.testColor();
-		test.testArea();
-		test.testPerimeter();
-		test.testRadius();
-		test.testWidth();
-		test.testLength();
-		test.testSide();
+		Rectangle r2 = (Rectangle)shapes[1];
+		System.out.println(String.format("Testing getLength() of %s", r2));
+		assert r2.getLength() == 4 : "getLength failed: " + r2.getLength();
+		r2.setLength(5);
+		System.out.println(String.format("Testing setLength() of %s", r2));
+		assert r2.getLength() == 5 : "setLength failed: " + r2.getLength();
+		
 		System.out.println("All tests done, successful!");
 	}
 }
+
+

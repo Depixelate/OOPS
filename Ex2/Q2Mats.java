@@ -60,7 +60,7 @@ class Matrix {
     }
 }
 
-public class Q2Mats {
+class Main {
     public static void print(Object obj) {
         System.out.print(obj);
     }

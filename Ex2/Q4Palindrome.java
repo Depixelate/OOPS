@@ -1,7 +1,7 @@
 package Ex2;
 import java.util.Scanner;
 
-public class Q4Palindrome {
+class Main {
     public static void main(String[] args) {
         var sc = new Scanner(System.in);
         System.out.print("Enter a string: ");

@@ -2,19 +2,24 @@ package Ex1b.Q1ElectricBill;
 
 import java.util.Scanner;
 
+import static java.lang.System.out;
+
 record BlockRate(double lowerBound, double rate) {}
 
+
+
+
 class Consumer {
-    enum Type {
-         DOMESTIC, COMMERCIAL
-    }
+    // enum Type {
+    //      DOMESTIC, COMMERCIAL
+    // }
     private String number;
     private String name;
-    private Type type;
+    private String type;
     private double prevMonthReading;
     private double curMonthReading;
 
-    public Consumer(String number, String name, Type type, double curMonthReading, double prevMonthReading) {
+    public Consumer(String number, String name, String type, double curMonthReading, double prevMonthReading) {
         this.number = number;
         this.name = name;
         this.type = type;
@@ -22,19 +27,20 @@ class Consumer {
         this.curMonthReading = curMonthReading;
     }
 
-    public Consumer(String number, String name, Type type) {
+    public Consumer(String number, String name, String type) {
         this(number, name, type, 0, 0);  
     }
 
     public double calculateBill() {
         double bill = 0;
         double amtReadingToProcess = curMonthReading;
+        
         BlockRate[] rates = null;
-        switch(type){
-            case DOMESTIC:
+        switch(type.toUpperCase()){
+            case "DOMESTIC":
                 rates = new BlockRate[]{new BlockRate(500, 6), new BlockRate(200, 4), new BlockRate(100, 2.5), new BlockRate(0, 1)};
                 break;
-            case COMMERCIAL:
+            case "COMMERCIAL":
                 rates = new BlockRate[]{new BlockRate(500, 7), new BlockRate(200, 6), new BlockRate(100, 4.5), new BlockRate(0, 2)};
                 break;
         }
@@ -62,39 +68,30 @@ class Consumer {
     }
 }
 
-public class ElectricBill {
-    public static void print(Object obj) {
-        System.out.print(obj);
-    }
+class Main {
+    // public static void print(Object obj) {
+    //     System.out.print(obj);
+    // }
     
-    public static void println(Object obj) {
-        System.out.println(obj);
-    }
+    // public static void println(Object obj) {
+    //     System.out.println(obj);
+    // }
     public static void main(String[] args) {
         var sc = new Scanner(System.in);
-        println("Enter the following customer information: ");
-        print("Enter number: ");
+        out.println("Enter the following customer information: ");
+        out.print("Enter number: ");
         String number = sc.nextLine();
-        print("Enter name: ");
+        out.print("Enter name: ");
         String name = sc.nextLine();
-        print("Enter type of connection(domestic/commercial): ");
-        String typeStr = sc.nextLine();
-        Consumer.Type type = null;
-        switch(typeStr.toLowerCase()) {
-            case "domestic":
-                type = Consumer.Type.DOMESTIC;
-                break;
-            case "commercial":
-                type = Consumer.Type.COMMERCIAL;
-                break;
-        }
-        print("Enter previous month's reading: ");
+        out.print("Enter type of connection(domestic/commercial): ");
+        String type = sc.nextLine();
+        out.print("Enter previous month's reading: ");
         double prevMonthReading = sc.nextDouble();
         sc.nextLine();
-        print("Enter current month's reading: ");
+        out.print("Enter current month's reading: ");
         double curMonthReading = sc.nextDouble();
         sc.nextLine();
         var consumer = new Consumer(number, name, type, curMonthReading, prevMonthReading);
-        println(consumer.toString());
+        out.println(consumer.toString());
     }
 }

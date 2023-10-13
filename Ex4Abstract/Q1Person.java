@@ -143,8 +143,8 @@ class TeachingAssistant extends Employee implements Student {
 }
 
 
-public class Q1Person {
-    public static void testDriver() {
+class TestDriver {
+    public static void main(String[] args) {
         out.printf("Welcome to the test!\n");
         var facName = readString("Enter faculty name: ");
         var facAddr = readString("Enter faculty address: ");
@@ -173,9 +173,6 @@ public class Q1Person {
         var ta = new TeachingAssistant(taName, taAddr, taId, taDept, taBasic, taProject, taCourse, taMarks);
         out.printf("TA:\n");
         out.printf("Name: %s, Address: %s, EmpId: %s, Dept: %s, Basic Salary: %d, Salary: %f, Project: %s, Course: %s, Marks: %s, GPA: %f\n", ta.getName(), ta.getAddress(), ta.getEmpid(), ta.getDept(), ta.getBasic(), ta.calSalary(), ta.getProject(), ta.getCourse(), Arrays.toString(ta.getMarks()), ta.calcGPA());
-    }
-    public static void main(String[] args) {
-        testDriver();
     }
 }
 
