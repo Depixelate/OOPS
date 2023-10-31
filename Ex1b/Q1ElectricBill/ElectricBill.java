@@ -4,7 +4,24 @@ import java.util.Scanner;
 
 import static java.lang.System.out;
 
-record BlockRate(double lowerBound, double rate) {}
+class BlockRate {
+    private double lowerBound;
+    private double rate;
+
+    public BlockRate(double lowerBound, double rate) {
+        this.lowerBound = lowerBound;
+        this.rate = rate;
+    }
+
+    public double getLowerBound() {
+        return lowerBound;
+    }
+
+    public double getRate() {
+        return rate;
+    }
+}
+//record BlockRate(double lowerBound, double rate) {}
 
 
 
@@ -46,24 +63,22 @@ class Consumer {
         }
 
         for(BlockRate rate : rates) {
-            if (rate.lowerBound() > amtReadingToProcess) 
+            if (rate.getLowerBound() > amtReadingToProcess) 
                 continue;
-            bill += (amtReadingToProcess - rate.lowerBound())*rate.rate();
-            amtReadingToProcess = rate.lowerBound();
+            bill += (amtReadingToProcess - rate.getLowerBound())*rate.getRate();
+            amtReadingToProcess = rate.getLowerBound();
         }
             
         return bill;
     }
 
     public String toString() {
-        String format_str =  """
-            Number: %s
-            Name: %s
-            Type of Connection: %s
-            Previous Month's Reading: %f
-            Current Month's Reading: %f
-            Bill for this Month: %f
-        """;
+        String format_str =  "Number: %s\n"
+            +"Name: %s\n"
+            +"Type of Connection: %s\n"
+            +"Previous Month's Reading: %f\n"
+            +"Current Month's Reading: %f\n"
+            +"Bill for this Month: %f\n";
         return String.format(format_str, number, name, type.toString(), prevMonthReading, curMonthReading, calculateBill());
     }
 }

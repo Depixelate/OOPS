@@ -46,12 +46,11 @@ class Main {
         boolean quit = false;
 
         while (!quit) {
-            out.print("""
-                    Options:
-                    1. Linear Search
-                    2. Binary Search
-                    3. Quit
-                    Enter Your option: """);
+            out.print("Options:\n"
+                    +" 1. Linear Search\n"
+                    +"2. Binary Search\n"
+                    +"3. Quit\n"
+                    +"Enter Your option: ");
             int option = Integer.parseInt(sc.nextLine());
 
             switch (option) {
