@@ -33,12 +33,13 @@ class Citizen {
         //     if(Character.isLetter(c)) throw new NumberFormatException("The age was input as alphabets!");
         // }
         printf("Enter Citizen's aadhar no.: ");
-        aadharNumber = sc.nextLine();
+        String tempAadhar = sc.nextLine();
         final String[] validAadhars = {"234567891011", "345678910111", "456789101112", "567891011121", "678910111213"};
-        Arrays.sort(validAadhars);
-        if(Arrays.binarySearch(validAadhars, 0, validAadhars.length, aadharNumber, null) < 0) {
+        
+        if(!Arrays.asList(validAadhars).contains(tempAadhar)) {
             throw new NullPointerException("Aadhar number is incorrect!");
         }
+        aadharNumber = tempAadhar;
         if(age < 18) {
             throw new MinorCitizenException();
         }
