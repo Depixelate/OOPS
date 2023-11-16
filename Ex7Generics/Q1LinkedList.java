@@ -26,7 +26,7 @@ class LinkedList<T>{
 
     public void add(int index, T elem) {
         var cur = head;
-        
+        for(int i = 0; i < index; i++, cur=cur.next);
         var newNode = new Node<T>(elem, cur.next);
         cur.next = newNode;
     }
@@ -62,12 +62,35 @@ class LinkedList<T>{
         for(int i = 0; i < index; i++) cur = cur.next;
         return cur.elem;
     }
+
+    public String toString() {
+        String ret = head.elem.toString();
+        Node<T> cur = head.next;
+        while(cur != null) {
+            ret += String.format("->%s", cur.elem);
+            cur = cur.next;
+        }
+        return ret;
+    }
 }
 
 class Main {
     
     public static void main(String[] args) {
-        LinkedList<?> s;
-
+        LinkedList<String> strings = new LinkedList<>();
+        LinkedList<Integer> ints = new LinkedList<>();
+        ints.add(5);
+        ints.add(7);
+        System.out.println(ints);
+        strings.add("Hi");
+        strings.add("Hello");
+        strings.add(0, "What?");
+        System.out.println(strings);
+        ints.add(0, 2);
+        ints.remove(Integer.valueOf(5));
+        System.out.println(ints);
+        strings.add(1, "In the middle");
+        strings.remove("What?");
+        System.out.println(strings);
     }
 }

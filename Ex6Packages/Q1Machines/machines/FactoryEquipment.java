@@ -6,6 +6,6 @@ public class FactoryEquipment extends Machine {
     }
 
     public String toString() {
-        return String.format("HOME APPLIANCE: type=%s, fuel type=%s, energy consumption = %f kJ/hr", type, fuelType, energyConsumption);
+        return String.format("FACTORY EQUIPMENT: type=%s, fuel type=%s, energy consumption = %f kJ/hr", type, fuelType, energyConsumption);
     }
 }
