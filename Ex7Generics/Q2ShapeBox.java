@@ -89,19 +89,45 @@ class ShapeBox<T extends Shape> {
 class Main {
     public static void main(String[] args) {
         var sbC = new ShapeBox<Circle>();
+        System.out.println("Created ShapeBox<Circle>...");
         var sbR = new ShapeBox<Rectangle>();
+        System.out.println("Created ShapeBox<Rectangle>...");
         var sbT = new ShapeBox<Triangle>();
+        System.out.println("Created ShapeBox<Triangle>...");
+
+        System.out.println();
+
+        System.out.println(String.format("Current Circle ShapeBox: %s, Current Area = %f", sbC, sbC.totalArea()));
+        System.out.println(String.format("Current Rectangle ShapeBox: %s, Current Area = %f", sbR, sbR.totalArea()));
+        System.out.println(String.format("Current Triangle ShapeBox: %s, Current Area = %f", sbT, sbT.totalArea()));
+
         sbC.add(new Circle(1));
         sbR.add(new Rectangle(2, 3));
         sbT.add(new Triangle(3, 4, 5));
-        System.out.println(String.format("%s=%f", sbC, sbC.totalArea()));
-        System.out.println(String.format("%s=%f", sbR, sbR.totalArea()));
-        System.out.println(String.format("%s=%f", sbT, sbT.totalArea()));
+
+        System.out.println();
+
+        System.out.println("Adding elements to the shapeboxes...");
+
+        System.out.println();
+
+        System.out.println(String.format("Current Circle ShapeBox: %s, Current Area = %f", sbC, sbC.totalArea()));
+        System.out.println(String.format("Current Rectangle ShapeBox: %s, Current Area = %f", sbR, sbR.totalArea()));
+        System.out.println(String.format("Current Triangle ShapeBox: %s, Current Area = %f", sbT, sbT.totalArea()));
+
         sbC.add(new Circle(2));
         sbR.add(new Rectangle(7, 1));
         sbT.add(new Triangle(3, 3, 3));
-        System.out.println(String.format("%s=%f", sbC, sbC.totalArea()));
-        System.out.println(String.format("%s=%f", sbR, sbR.totalArea()));
-        System.out.println(String.format("%s=%f", sbT, sbT.totalArea()));
+
+        System.out.println();
+
+        System.out.println("Adding elements to the shapeboxes...");
+
+        System.out.println();
+
+        System.out.println(String.format("Current Circle ShapeBox: %s, Current Area = %f", sbC, sbC.totalArea()));
+        System.out.println(String.format("Current Rectangle ShapeBox: %s, Current Area = %f", sbR, sbR.totalArea()));
+        System.out.println(String.format("Current Triangle ShapeBox: %s, Current Area = %f", sbT, sbT.totalArea()));
+        
     }
 }

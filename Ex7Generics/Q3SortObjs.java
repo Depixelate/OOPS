@@ -57,12 +57,12 @@ class Main {
 
     public static void main(String[] args) {
         Integer[] elems = {1, 5, 3, 4, 2, 7, -1, 9};
-        System.out.println("Before: " + Arrays.toString(elems));
+        System.out.println("Initial int array: " + Arrays.toString(elems));
         Main.<Integer>sort(elems);
-        System.out.println("After: " + Arrays.toString(elems));
+        System.out.println("After sorting int array: " + Arrays.toString(elems));
         String[] strElems = {"Berlin", "Delhi", "Mumbai", "Zurich", "Ahmedabad", "Chennai", "Paris"};
-        System.out.println("Before: " + Arrays.toString(strElems));
+        System.out.println("Initial String array: " + Arrays.toString(strElems));
         Main.<String>sort(strElems);
-        System.out.println("After: " + Arrays.toString(strElems));
+        System.out.println("After sorting String array: " + Arrays.toString(strElems));
     }
 }
