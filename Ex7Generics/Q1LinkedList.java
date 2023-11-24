@@ -64,6 +64,7 @@ class LinkedList<T>{
     }
 
     public String toString() {
+        if(head == null) return "[]";
         String ret = head.elem.toString();
         Node<T> cur = head.next;
         while(cur != null) {
@@ -77,20 +78,40 @@ class LinkedList<T>{
 class Main {
     
     public static void main(String[] args) {
-        LinkedList<String> strings = new LinkedList<>();
+        
         LinkedList<Integer> ints = new LinkedList<>();
+        System.out.println("Current int linked list: " + ints);
+        System.out.println("Adding 5..");
         ints.add(5);
+        System.out.println("Adding 7..");
         ints.add(7);
-        System.out.println(ints);
-        strings.add("Hi");
-        strings.add("Hello");
-        strings.add(0, "What?");
-        System.out.println(strings);
+        System.out.println("Adding 6..");
+        ints.add(6);
+        System.out.println("Current int linked list: " + ints);
         ints.add(0, 2);
+        System.out.println("Adding 2..");
+        System.out.println("Removing 5..");
         ints.remove(Integer.valueOf(5));
-        System.out.println(ints);
+        System.out.println("Current int linked List: " + ints);
+        ints.remove(1);
+        System.out.println("Removing element at index 1..");
+        System.out.println("Current int linked List: " + ints);
+        
+        LinkedList<String> strings = new LinkedList<>();
+        System.out.println();
+        System.out.println("Current string linked list: " + strings);
+        strings.add("Hi");
+        System.out.println("Adding 'Hi'..");
+        strings.add("Hello");
+        System.out.println("Adding 'Hello'..");
+        strings.add(0, "What?");
+        System.out.println("Adding 'What?'..");
+        System.out.println("Current string linked list: " + strings);
         strings.add(1, "In the middle");
+        System.out.println("Adding 'In the middle' at index 1..");
+        System.out.println("Current string linked list: " + strings);
         strings.remove("What?");
-        System.out.println(strings);
+        System.out.println("Removing 'What?'..");
+        System.out.println("Current string linked list: " + strings);
     }
 }
